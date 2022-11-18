@@ -50,6 +50,26 @@ echo 'Page generated in '.$total_time.' seconds.';
 echo '</p>';
 ?>
 
+<p style="font-family:verdana;font-size:100%;color:black">
+
+Page reloads: <?php 
+if (isset($_GET['reload'])){
+    echo ($_GET['reload']);
+} else {
+    echo "0";
+}
+?>
+</p>
 </div>
+<script>
+var url = new URL(window.location.href);
+var reload = url.searchParams.get("reload");
+reload++;
+setTimeout(() => {  
+window.location.href = window.location.origin + "/?reload=" + reload;
+
+}, 100);
+
+</script>
 </body>
 </html>
